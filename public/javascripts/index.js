@@ -1,5 +1,17 @@
 (function ($) {
 
+  // 页面重定向
+  function redirect() {
+    var token = readCookie('token');
+    var url = QueryString.url;
+    if (token && url) {
+      url += '?token=' +  token;
+      window.location.href = decodeURIComponent(url);
+    }
+  }
+  redirect();
+
+
   $('#login').click(function () {
     var number = $('#number').val();
     var password = $('#password').val();
@@ -28,6 +40,7 @@
       if (res.code === 0) {
         $btn.button('reset');
         var token = res.token;
+        createCookie('token', token, 30);
         window.location.href = '/users/grade?token=' + token;
       } else {
         swal(

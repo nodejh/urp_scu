@@ -1,0 +1,113 @@
+<% include _head.ejs %>
+<% include _header.ejs %>
+<% include _nav.ejs %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-lg-8 col-sm-offset-1 col-lg-offset-2">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">计算方法</div>
+                <div class="panel-body">
+                    <p>加权平均分 = ∑(成绩 * 课程学分) / ∑课程学分</p>
+                    <p>绩点 = ∑(绩点 * 课程学分) / ∑课程学分</p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">百分之成绩与绩点对照表</div>
+                <div class="panel-body">
+                    <table class="table table-striped table-bordered">
+                        <tr>
+                            <th>百分制成绩</th>
+                            <td>100~95</td>
+                            <td>94~90</td>
+                            <td>89~85</td>
+                            <td>84~80</td>
+                            <td>79~75</td>
+                            <td>74~70</td>
+                            <td>69~65</td>
+                            <td>64~60</td>
+                            <td><60</td>
+                        </tr>
+                        <tr>
+                            <th>成绩绩点</th>
+                            <td>4</td>
+                            <td>3.8</td>
+                            <td>3.6</td>
+                            <td>3.2</td>
+                            <td>2.7</td>
+                            <td>2.2</td>
+                            <td>1.7</td>
+                            <td>1</td>
+                            <td>0</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">等级转换为百分制成绩和绩点对照表</div>
+                <div class="panel-body">
+                    <table class="table table-striped table-bordered">
+                        <tr>
+                            <th>等级成绩</th>
+                            <td>优秀</td>
+                            <td>良好</td>
+                            <td>中等</td>
+                            <td>通过</td>
+                            <td>未通过</td>
+                        </tr>
+                        <tr>
+                            <th>百分制成绩</th>
+                            <td>95</td>
+                            <td>85</td>
+                            <td>75</td>
+                            <td>60</td>
+                        </tr>
+                        <tr>
+                            <th>成绩绩点</th>
+                            <td>4</td>
+                            <td>3.6</td>
+                            <td>2.7</td>
+                            <td>1</td>
+                            <td>0</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">关于形势与政策</div>
+                <div class="panel-body">
+                    <p>每个学期的形势与政策学分为 0.25 分。</p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">关于不及格成绩的处理</div>
+                <div class="panel-body">
+                    <div>
+                        对于必修不及格成绩，不同学院有不同计算方式，大概有三种：
+                        <ul>
+                            <li>按照第一次期末的成绩进行计算。</li>
+                            <li>如果补考过了按照补考成绩计算。</li>
+                            <li>如果补考没过重修过了按照重修成绩计算。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        在该绩点计算器中：
+                        <ul>
+                            <li>对于当前学期成绩，计算了不及格成绩。</li>
+                            <li>对于每学期的成绩，没有计算不及格成绩。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<% include _scripts.ejs %>
+<% include _footer.ejs %>

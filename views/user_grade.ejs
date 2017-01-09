@@ -4,9 +4,38 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+        <div class="col-xs-12 col-sm-10 col-lg-8 col-sm-offset-1 col-lg-offset-2">
             <table class="table table-striped table-bordered">
-                <h4>共 <%= grade.length %> 门课程</h4>
+                <div class="cm-table-info">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p>共 <b><%= grade.length %></b> 门课程</p>
+                        </div>
+                        <div class="col-xs-6">
+                            <p>总学分 <b><%= allCredit %></b></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p>平均分 <b><%= gpa.averageGrade %></b></p>
+                        </div>
+                        <div class="col-xs-6">
+                            <p>平均绩点 <b><%= gpa.averageGpa %></b></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p>必修平均分 <b><%= gpa.averageGradeObligatory %></b></p>
+                        </div>
+                        <div class="col-xs-6">
+                            <p>必修绩点 <b><%= gpa.averageGpaObligatory %></b></p>
+                        </div>
+                    </div>
+
+                    <% if (grade.length !== gradeList.length) { %>
+                    已出成绩 <b><%= gradeList.length %></b> 门
+                    <% } %>
+                </div>
                 <tr>
                     <th>课程名</th>
                     <th>课程号</th>
@@ -18,16 +47,16 @@
                 <% grade.forEach(function (item) { %>
 
                 <tr>
-                    <td class="cm-td-medium"><%= item.courseName %></td>
-                    <td class="cm-td-medium"><%= item.courseNumber %></td>
-                    <td class="cm-td-small"><%= item.lessonNumber %></td>
-                    <td class="cm-td-small"><%= item.credit %></td>
+                    <td class="cm-td-20"><%= item.courseName %></td>
+                    <td class="cm-td-18"><%= item.courseNumber %></td>
+                    <td class="cm-td-15"><%= item.lessonNumber %></td>
+                    <td class="cm-td-14"><%= item.credit %></td>
                     <% if (item.courseProperty === '必修') { %>
-                    <td class="cm-td-small"><%= item.courseProperty %></td>
+                    <td class="cm-td-17"><%= item.courseProperty %></td>
                     <% } else { %>
-                    <td class="cm-td-small text-muted"><%= item.courseProperty %></td>
+                    <td class="cm-td-17 text-muted"><%= item.courseProperty %></td>
                     <% } %>
-                    <td class="cm-td-small"><%= item.grade %></td>
+                    <td class="cm-td-16"><%= item.grade %></td>
                 </tr>
 
                 <% }); %>

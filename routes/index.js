@@ -55,4 +55,15 @@ router.post('/login', (req, res) => {
 });
 
 
+/**
+ * 绩点计算规则
+ * @type {e.Router|*}
+ */
+router.get('/calculate_rule', (req, res) => {
+  res.render('calculate_rule', {
+    title: '绩点计算规则',
+  });
+});
+
+
 module.exports = router;
