@@ -16,14 +16,20 @@
                     <th>成绩</th>
                 </tr>
                 <% grade.forEach(function (item) { %>
+
                 <tr>
-                    <td><%= item.courseName %></td>
-                    <td><%= item.courseNumber %></td>
-                    <td><%= item.lessonNumber %></td>
-                    <td><%= item.credit %></td>
-                    <td><%= item.courseProperty %></td>
-                    <td><%= item.grade %></td>
+                    <td class="cm-td-medium"><%= item.courseName %></td>
+                    <td class="cm-td-medium"><%= item.courseNumber %></td>
+                    <td class="cm-td-small"><%= item.lessonNumber %></td>
+                    <td class="cm-td-small"><%= item.credit %></td>
+                    <% if (item.courseProperty === '必修') { %>
+                    <td class="cm-td-small"><%= item.courseProperty %></td>
+                    <% } else { %>
+                    <td class="cm-td-small text-muted"><%= item.courseProperty %></td>
+                    <% } %>
+                    <td class="cm-td-small"><%= item.grade %></td>
                 </tr>
+
                 <% }); %>
             </table>
         </div>

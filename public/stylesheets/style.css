@@ -17,8 +17,14 @@ a {
     background-color: #fff;
     border-color: #e7e7e7;
 }
+.navbar-default .navbar-nav>.active.c-active>a, .navbar-default .navbar-nav>.active.c-active>a:hover, .navbar-default .navbar-nav>.active.c-active>a:focus {
+    color: #555;
+    background-color: #f8f8f8;
+}
 
-
+.form-login-heading {
+    margin: 30px auto;
+}
 .form-login .form-control {
     position: relative;
     height: auto;
@@ -31,7 +37,7 @@ a {
 .form-login .form-control:focus {
     z-index: 2;
 }
-.form-login input[type="text"] {
+.form-login input[type="number"] {
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
@@ -40,4 +46,12 @@ a {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+}
+
+.cm-td-small {
+    width: 15%;
+}
+
+.cm-td-medium {
+    width: 20%;
 }
