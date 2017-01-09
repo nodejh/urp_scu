@@ -50,8 +50,5 @@ jspm_packages
 
 
 .gitignore
-.idea/inspectionProfiles/
-.idea/modules.xml
-.idea/urp_scu.iml
-.idea/workspace.xml
+.idea
 package.json
