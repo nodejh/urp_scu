@@ -33,6 +33,7 @@ const loginZhjw = (number, password) => {
         password: '您的密码不正确，请您重新输入！',
         database: '数据库忙请稍候再试',
         notLogin: '请您登录后再使用',
+        arrears: '您目前已处于违规欠费状态',
       };
       console.log(result.body.indexOf(successText));
       if (result.body.indexOf(successText) !== -1) {
@@ -49,6 +50,8 @@ const loginZhjw = (number, password) => {
         return Promise.reject(new Error('您的密码不正确，请您重新输入！'));
       } else if (result.body.indexOf(errorText.notLogin) !== -1) {
         return Promise.reject(new Error('请您登录后再使用'));
+      } else if (result.body.indexOf(errorText.arrears) !== -1) {
+        return Promise.reject(new Error('您目前已处于违规欠费状态，请尽快到财务处完善财务手续'));
       }
       return Promise.reject(new Error('登录教务系统失败，请重试！'));
     })

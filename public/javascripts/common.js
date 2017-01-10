@@ -101,31 +101,3 @@ var QueryString = function () {
   }
   return query_string;
 }();
-
-(function ($) {
-
-  // 点击跳转
-  $('#nav li').click(function () {
-    var id = $(this).attr('id');
-    console.log('id: ', id);
-    var token = readCookie('token');
-    switch (id) {
-      case 'grade':
-        if (token) {
-          window.location.href = '/users/grade?token=' + token;
-        } else {
-          window.location.href = '/';
-        }
-        break;
-      // case 'grades':
-      //   if (token) {
-      //     window.location.href = '/users/grades?token' + token;
-      //   } else {
-      //     window.location.href = '/';
-      //   }
-      //   break;
-    }
-  });
-
-
-})(jQuery);

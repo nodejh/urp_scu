@@ -1,16 +1,5 @@
 (function ($) {
 
-  // 页面重定向
-  function redirect() {
-    var token = readCookie('token');
-    var url = QueryString.url;
-    if (token && url) {
-      url += '?token=' +  token;
-      window.location.href = decodeURIComponent(url);
-    }
-  }
-  redirect();
-
 
   $('#login').click(function () {
     var number = $('#number').val();
@@ -37,11 +26,10 @@
       password: password,
     };
     $.post('/login', data, function (res) {
+      console.log('res: ', res);
       if (res.code === 0) {
         $btn.button('reset');
-        var token = res.token;
-        createCookie('token', token, 30);
-        window.location.href = '/users/grade?token=' + token;
+        window.location.href = '/users/grade';
       } else {
         swal(
           res.message,

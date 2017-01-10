@@ -40,10 +40,11 @@ router.post('/login', (req, res) => {
   login(number, password)
     .then((cookie) => {
       const token = jwt.encode({ cookie }, config.secret);
+      const cookieOption = { expires: new Date(Date.now() + config.expires), httpOnly: true };
+      res.cookie('token', token, cookieOption);
       res.json({
         code: 0,
         message: '登录成功',
-        token,
       });
     })
     .catch((exception) => {
@@ -52,6 +53,19 @@ router.post('/login', (req, res) => {
         message: exception.message,
       });
     });
+});
+
+
+/**
+ * 退出登录
+ */
+router.get('/logout', (req, res) => {
+  const cookie = req.cookies;
+  console.log(cookie);
+  console.log(req.signedCookies);
+  console.log('token: ', req.cookies.token);
+  res.clearCookie('token', { path: '/' });
+  res.redirect('/');
 });
 
 

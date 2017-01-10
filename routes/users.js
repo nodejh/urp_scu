@@ -6,11 +6,16 @@ const calculateGpa = require('./../helper/calculateGpa');
 
 const router = new express.Router();
 
+
 /**
  * 本学期成绩页面
  */
 router.get('/grade', (req, res) => {
-  const token = req.query.token;
+  const reqCookies = req.cookies;
+  if (!reqCookies) {
+    return res.redirect('/');
+  }
+  const token = reqCookies.token;
   if (!token) {
     return res.redirect('/');
   }
@@ -27,7 +32,7 @@ router.get('/grade', (req, res) => {
           return false;
         });
         const gpa = calculateGpa.calculateGpa(gradeList);
-        return res.render('user_grade', {
+        return res.render('users_grade', {
           title: '本学期成绩',
           grade: result,
           gpa,
@@ -50,7 +55,55 @@ router.get('/grade', (req, res) => {
  * 所有学期成绩
  */
 router.get('/grades', (req, res) => {
+  const reqCookies = req.cookies;
+  if (!reqCookies) {
+    return res.redirect('/');
+  }
+  const token = reqCookies.token;
+  if (!token) {
+    return res.redirect('/');
+  }
+  res.render('users_grades', {
+    title: '所有学期成绩',
+  });
+});
 
+
+
+
+/**
+ * 方案完成情况
+ */
+router.get('/plan', (req, res) => {
+  const reqCookies = req.cookies;
+  if (!reqCookies) {
+    return res.redirect('/');
+  }
+  const token = reqCookies.token;
+  if (!token) {
+    return res.redirect('/');
+  }
+  res.render('users_plan', {
+    title: '方案完成情况',
+  });
+});
+
+
+/**
+ * 课表
+ */
+router.get('/curriculum', (req, res) => {
+  const reqCookies = req.cookies;
+  if (!reqCookies) {
+    return res.redirect('/');
+  }
+  const token = reqCookies.token;
+  if (!token) {
+    return res.redirect('/');
+  }
+  res.render('users_curriculum', {
+    title: '课表',
+  });
 });
 
 
