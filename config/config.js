@@ -10,6 +10,8 @@ const config = {
     currentTermGrade: '/bxqcjcxAction.do?pageSize=100',
     // lnxndm 为学期数目。如果参数的值没有对应的学期，则会显示所有学期成绩
     allPassGrades: '/gradeLnAllAction.do?type=ln&oper=qbinfo&lnxndm=1',
+    // 方案计划完成情况
+    plan: '/gradeLnAllAction.do?type=ln&oper=lnfaqk&flag=zx',
   },
 };
 

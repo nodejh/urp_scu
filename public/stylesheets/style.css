@@ -97,6 +97,10 @@ a {
     margin: 10px auto 10px auto;
     padding: 0 8px;
 }
+.cm-panel-body {
+    overflow-x: scroll;
+}
+
 
 /* 动态为footer添加类fixed-bottom */
 .fixed-bottom {

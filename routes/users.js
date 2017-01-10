@@ -3,6 +3,7 @@ const jwt = require('jwt-simple');
 const config = require('./../config/config');
 const getCurrentTermGrade = require('./../crawler/getCurrentTermGrade');
 const getAllPassGrades = require('./../crawler/getAllPassGrades');
+const getPlanInfo = require('./../crawler/getPlanInfo');
 const calculateGpa = require('./../helper/calculateGpa');
 
 const router = new express.Router();
@@ -96,9 +97,22 @@ router.get('/plan', (req, res) => {
   if (!token) {
     return res.redirect('/');
   }
-  res.render('users_plan', {
-    title: '方案完成情况',
-  });
+  try {
+    const cookie = jwt.decode(token, config.secret);
+    getPlanInfo(cookie.cookie)
+      .then((result) => {
+        res.render('users_plan', {
+          title: '方案完成情况',
+        });
+      })
+      .catch((exception) => {
+        console.log('exception: ', exception);
+        return res.redirect('/');
+      });
+  } catch (exception) {
+    console.log('exception: ', exception);
+    return res.redirect('/');
+  }
 });
 
 
