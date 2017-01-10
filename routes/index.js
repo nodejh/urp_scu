@@ -1,7 +1,7 @@
 const express = require('express');
 const jwt = require('jwt-simple');
 const config = require('./../config/config');
-const login = require('./../models/loginZhjw');
+const login = require('./../crawler/loginZhjw');
 
 
 const router = new express.Router();

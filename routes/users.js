@@ -1,7 +1,8 @@
 const express = require('express');
 const jwt = require('jwt-simple');
 const config = require('./../config/config');
-const getCurrentTermGrade = require('./../models/getCurrentTermGrade');
+const getCurrentTermGrade = require('./../crawler/getCurrentTermGrade');
+const getAllPassGrades = require('./../crawler/getAllPassGrades');
 const calculateGpa = require('./../helper/calculateGpa');
 
 const router = new express.Router();
@@ -63,12 +64,24 @@ router.get('/grades', (req, res) => {
   if (!token) {
     return res.redirect('/');
   }
-  res.render('users_grades', {
-    title: '所有学期成绩',
-  });
+  try {
+    const cookie = jwt.decode(token, config.secret);
+    getAllPassGrades(cookie.cookie)
+      .then((grades) => {
+        res.render('users_grades', {
+          title: '所有学期成绩',
+          grades,
+        });
+      })
+      .catch((exception) => {
+        console.log('exception: ', exception);
+        return res.redirect('/');
+      });
+  } catch (exception) {
+    console.log('exception: ', exception);
+    return res.redirect('/');
+  }
 });
-
-
 
 
 /**

@@ -87,8 +87,15 @@ a {
     }
 }
 
+.cm-term {
+    margin: 1px auto 50px auto;
+}
+.cm-table-title {
+    padding: 0 8px;
+}
 .cm-table-info {
-    margin: 10px auto 20px auto;
+    margin: 10px auto 10px auto;
+    padding: 0 8px;
 }
 
 /* 动态为footer添加类fixed-bottom */

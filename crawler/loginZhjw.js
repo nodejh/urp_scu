@@ -18,7 +18,7 @@ const loginZhjw = (number, password) => {
   const options = {
     host: config.hostname,
     method: 'POST',
-    path: '/loginAction.do',
+    path: config.paths.login,
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Content-Length': Buffer.byteLength(postData),

@@ -10,16 +10,16 @@ const config = require('./../config/config');
  * @returns {Promise} 查询正确时返回成绩列表
  */
 const getCurrentTermGrade = (cookie) => {
-  const postDate = '';
+  const postData = '';
   const options = {
     host: config.hostname,
     method: 'GET',
-    path: '/bxqcjcxAction.do?pageSize=100',
+    path: config.paths.currentTermGrade,
     headers: {
       Cookie: cookie,
     },
   };
-  return request(postDate, options)
+  return request(postData, options)
     .then((result) => {
       const successText = '本学期成绩查询列表';
       const dom = result.body;
