@@ -22,20 +22,20 @@ const getPlanInfo = (cookie) => {
   return request(postData, options)
     .then((result) => {
       const successText = '成绩查询';
-      const dom = result.body;
+      const errorText = {
+        database: '数据库忙请稍候再试',
+        notLogin: '请您登录后再使用',
+      };
+      const dom = result.body.replace(/\s+/g, '');
       console.log('dom: ', dom);
-      log.text('dom.indexOf(successText): ', dom.indexOf(successText));
-      if (dom.indexOf(successText) !== -1) {
-        const $ = cheerio.load(dom, {
-          ignoreWhitespace: true,
-          xmlMode: false,
-          lowerCaseTags: false,
-        });
-        const $list = $('body').find('table[id="user"]').find('tr');
-        const grade = [];
-        // eslint-disable-line
-        log.info('grade: ', grade);
-        return Promise.resolve(grade);
+      if (dom.indexOf(errorText.database) !== -1) {
+        return Promise.reject(new Error('数据库忙请稍候再试'));
+      } else if (dom.indexOf(errorText.notLogin) !== -1) {
+        return Promise.reject(new Error('请您登录后再使用'));
+      } else if (dom.indexOf(successText) !== -1) {
+        const regexp = /tree\.add\([\\/.,\-'":：()、[\]ⅠⅡ（）\w\s\u4e00-\u9fa5]+\);/g;
+        const classes = dom.match(regexp);
+        return Promise.resolve(classes);
       }
       return Promise.reject(new Error('身份信息失效，请重新登录后再查看成绩'));
     })
